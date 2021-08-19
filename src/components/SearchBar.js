@@ -4,10 +4,11 @@ class SearchBar extends React.Component {
 
     state = { term: '' };
 
-    onFormSubmit(event) {
+    onFormSubmit = (event) => {
         event.preventDefault();
 
-        // TODO: make sure we call callback from parent component
+        this.props.onFormSubmit(this.state.term);
+
     };
 
     render() {
@@ -16,7 +17,11 @@ class SearchBar extends React.Component {
                 <form className="ui form" onSubmit={this.onFormSubmit} >
                     <div className="field">
                         <label>Video Search</label>
-                        <input type='text' value={this.state.term} onChange={(event) => this.setState({ term: event.target.value })}/>
+                        <input
+                            type='text'
+                            value={this.state.term}
+                            onChange={(event) => this.setState({ term: event.target.value })}
+                        />
                     </div>
                 </form>
             </div>
